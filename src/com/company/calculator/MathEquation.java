@@ -1,14 +1,27 @@
-package com.company;
+package com.company.calculator;
 
 /**
  * Created by papillon on 11/2/2016.
  */
 public class MathEquation {
+    //Fields
     private double leftVal;
     private double rightVal;
     private char opCode;
     private double result;
 
+    //Constructors
+    public MathEquation(){}
+    public MathEquation(char opCode){
+        this.opCode=opCode;
+    }
+    public MathEquation(double leftVal, double rightVal,char opCode){
+        this(opCode);
+        this.leftVal=leftVal;
+        this.rightVal=rightVal;
+    }
+
+    //Methods
     public double getLeftVal() {
         return leftVal;
     }
