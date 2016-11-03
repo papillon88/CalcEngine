@@ -1,6 +1,6 @@
 package com.company;
 
-/** ------------------------II---------------------------
+/**
  * Created by papillon on 11/2/2016.
  */
 public class MathEquation {
