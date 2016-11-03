@@ -1,4 +1,4 @@
-package com.company;
+package com.company.main;
 
 import com.company.calculator.MathEquation;
 import com.company.flight.Flight;
