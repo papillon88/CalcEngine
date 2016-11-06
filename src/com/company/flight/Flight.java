@@ -4,11 +4,17 @@ package com.company.flight;
  * Created by papillon on 11/3/2016.
  */
 public class Flight {
-    private final int SEATS=150;
+    public int SEATS=150;
+    public int getSEATS(){
+        return 150;
+    }
     private final int MAX_CARRY_ONS=SEATS*2;
     private final int MAX_CHECKED_BAGS=SEATS*3;
 
     private int passengers,flightNumber;
+    public int getPassengers(){
+        return passengers;
+    }
     private char flightClass;
     private boolean[] isSeatAvailable;//tracks each seat
 
@@ -50,6 +56,7 @@ public class Flight {
     public void add1Passenger(){
         if(hasSeating()){
             passengers++;
+            System.out.println("passenger added to flight with SEATS = "+getSEATS());
         } else {
             handleTooMany();
         }
@@ -89,7 +96,8 @@ public class Flight {
     }
 
     private boolean hasSeating(){
-        return passengers<SEATS;
+        //return passengers<SEATS;
+        return passengers<getSEATS();
     }
     private boolean hasSeating(int count){
         return passengers+count<=SEATS;
@@ -101,4 +109,15 @@ public class Flight {
         return totalCheckedBags+checkedBags<=MAX_CHECKED_BAGS;
     }
 
+    @Override
+    public boolean equals(Object o){
+        if(super.equals(o))
+            return true;
+        if(o instanceof Flight){
+            Flight other = (Flight)o;
+            return flightNumber==other.flightNumber &&
+                    flightClass==other.flightClass;
+        } else
+            return false;
+    }
 }

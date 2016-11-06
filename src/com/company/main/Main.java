@@ -1,8 +1,12 @@
 package com.company.main;
 
-import com.company.calculator.MathEquation;
+import com.company.calculator.*;
+import com.company.flight.CargoFlight;
 import com.company.flight.Flight;
 import com.company.flight.Passenger;
+import com.company.test.A;
+import com.company.test.B;
+import com.sun.corba.se.spi.oa.ObjectAdapter;
 
 public class Main {
 
@@ -50,6 +54,19 @@ public class Main {
         eqoverload.execute((double)leftInt,rightInt);
         System.out.println(eqoverload.getResult());
 
+        System.out.println("Using inheritance");
+        CalculateBase[] cb = {new Adder(100,50),
+                              new Subtracter(100,50),
+                              new Divider(100,50),
+                              new Multiplier(100,50)};
+
+        for(CalculateBase c : cb){
+            c.calculate();
+            System.out.println(c.getResult());
+        }
+
+
+
         //Passenger,Flights etc
         System.out.println("======Flight output======");
         Passenger jane1 = new Passenger();
@@ -73,6 +90,64 @@ public class Main {
         Passenger john = new Passenger(0,3);
         Passenger susie = new Passenger(0,3);
         val2.addPassengers(janet,john,susie);
+
+        CargoFlight cf = new CargoFlight();
+        cf.add1Package(1,3,5);
+        cf.addPassengers(janet);
+
+        Flight f = new CargoFlight();
+        f.addPassengers(jane1);
+        //cant do this
+        //f.add1Package(3,4,5);
+        Flight[] squadron = new Flight[5];
+        squadron[0]=new Flight();
+        squadron[1]=new CargoFlight();
+        squadron[2]=new Flight();
+        squadron[3]=new CargoFlight();
+        squadron[4]=new Flight();
+
+        //Method/Field overriding/hiding
+        Flight f1 = new Flight();
+        System.out.println(f1.getSEATS());
+        CargoFlight cf1 = new CargoFlight();
+        System.out.println(cf1.getSEATS());
+
+        Flight f2 = new CargoFlight();
+        System.out.println(f2.getSEATS());
+        f2.add1Passenger();
+        cf1.add1Passenger();
+
+        Object[] obj = new Object[3];
+        obj[0] = new Flight();
+        obj[1] = new Passenger(0,2);
+        obj[2] = new CargoFlight();
+
+        Object o = new Passenger();
+        o = new CargoFlight();
+        if(o instanceof CargoFlight){
+            cf = (CargoFlight)o;
+            cf.add1Package(1,2,3);
+        }
+
+        Flight f5 = new Flight(173);
+        Flight f4 = new Flight(172);
+        System.out.println(f5.equals(f4));
+
+        CargoFlight cg = new CargoFlight(145);
+
+
+        System.out.println("======Test output======");
+        A a = new A();
+        B b = new B();
+        System.out.println(a.getChA());
+        System.out.println(b.getChB());
+
+        System.out.println(b.getChA());
+
+        A a2 = new B();
+        System.out.println(a2.commonMethod());
+
+
 
     }
 }

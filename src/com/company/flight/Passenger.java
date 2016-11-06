@@ -3,7 +3,7 @@ package com.company.flight;
 /**
  * Created by papillon on 11/3/2016.
  */
-public class Passenger {
+public final class Passenger {
     private int checkedBags;
     private int freeBags;
     private double perBagFee;
