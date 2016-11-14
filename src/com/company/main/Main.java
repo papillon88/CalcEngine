@@ -1,9 +1,7 @@
 package com.company.main;
 
 import com.company.calculator.*;
-import com.company.flight.CargoFlight;
-import com.company.flight.Flight;
-import com.company.flight.Passenger;
+import com.company.flight.*;
 import com.company.test.A;
 import com.company.test.B;
 import com.sun.corba.se.spi.oa.ObjectAdapter;
@@ -63,6 +61,19 @@ public class Main {
         for(CalculateBase c : cb){
             c.calculate();
             System.out.println(c.getResult());
+        }
+
+        String[] statements = {
+                "divide 100.0 50.0",
+                "add 25.0 92.0",
+                "subtract 225.0 17.0",
+                "multiply 11.0 3.0"
+        };
+
+        CalculateHelper ch = new CalculateHelper();
+        for(String statement : statements){
+            ch.process(statement);
+            System.out.println(ch);
         }
 
 
@@ -135,19 +146,61 @@ public class Main {
 
         CargoFlight cg = new CargoFlight(145);
 
+        f4 = new Flight(127);
+        System.out.println(f4);
+
+        CrewMember judy = new CrewMember(FlightCrewJob.AirMarshal);
+
 
         System.out.println("======Test output======");
         A a = new A();
         B b = new B();
         System.out.println(a.getChA());
-        System.out.println(b.getChB());
+        System.out.println(a.getChFromMethod());
+        System.out.println(b.getChFromMethod());
 
         System.out.println(b.getChA());
 
         A a2 = new B();
         System.out.println(a2.commonMethod());
 
+        //String more data types etc.
+        System.out.println("======More datatypes output======");
+        String s1 = "Hello";
+        String s2 = s1.intern();
+        System.out.println(s1==s2);
+        int i = 100;
+        String s3 = String.valueOf(i);
+        System.out.println(s3);
+        StringBuilder sb = new StringBuilder(10);
+        String s = "flirida ";
+        sb.append("I flew to ");
+        sb.append(s+"on ");
+        sb.append(100);
+        System.out.println(sb.toString()+sb.length()+sb.capacity());
 
+        //Wrapper classes
+        System.out.println("======Wrapper Classes output======");
+        Integer a1 = 100;
+        int b1 = a1;
+        Integer a3 = Integer.valueOf(100);
+        int b2 = a3.intValue();
+        String g = "87.44";
+        double de = Double.parseDouble(g);
+        Double de2 = Double.valueOf(g);
+        Object[] ob1 = new Object[3];
+        ob1[0] = 9;
+        ob1[1] = "hello";
+
+        //Special RULE in java if integer/byte/long/short
+        //between -127 to 128,wrapper classes evaluate ==
+        //as equals() method.
+        Integer i100a = 1000;
+        Integer i100b = 10*10*10;
+        System.out.println(i100a == i100b);
+        Integer i100c = 100;
+        Integer i100d = 10*10;
+        System.out.println(i100c == i100d);
 
     }
 }

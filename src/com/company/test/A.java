@@ -4,11 +4,14 @@ package com.company.test;
  * Created by papillon on 11/6/2016.
  */
 public class A {
-    private char ch = 'A';
+    char ch = 'A';
     public char getChA(){
         return ch;
     }
-    public int commonMethod(){
-        return 300;
+    public char getChFromMethod(){
+        return commonMethod();
+    }
+    public char commonMethod(){
+        return ch;
     }
 }

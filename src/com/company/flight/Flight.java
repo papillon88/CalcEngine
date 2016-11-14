@@ -120,4 +120,11 @@ public class Flight {
         } else
             return false;
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "SEATS=" + SEATS +
+                '}';
+    }
 }

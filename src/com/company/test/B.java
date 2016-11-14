@@ -8,8 +8,11 @@ public class B extends A {
     public char getChB(){
         return ch;
     }
-    @Override
-    public int commonMethod(){
-        return 400;
-    }
+    /*public char getChFromMethod(){
+        return getChB();
+    }*/
+    //@Override
+    /*public char commonMethod(){
+        return ch;
+    }*/
 }
